@@ -1,3 +1,4 @@
+import java.util.Random;
 public class NossoVetor {
   private int ocupacao;
   private int[] vetor;
@@ -94,6 +95,26 @@ public class NossoVetor {
         return j;
     return -1;
   }
+
+  public void preecheVetor () {
+    Random random = new Random();
+    for (int i=0; i<vetor.length; i++) {
+      vetor[i] = random.nextInt(vetor.length * 10);
+    }
+    ocupacao = vetor.length;
+  }
+  public void bubbleSort () {
+    for (int i=1; i<vetor.length; i++) {
+      for (int j=0; j < vetor.length - i; j++) {
+        if (vetor[j] > vetor[j+1]) {
+          int aux = vetor[j];
+          vetor[j] = vetor[j+1];
+          vetor[j+1] = aux;
+        }
+      }
+    }
+  }
+
 }
 
 class VetorVazioException extends RuntimeException {
