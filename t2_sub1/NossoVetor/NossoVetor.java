@@ -98,6 +98,17 @@ public class NossoVetor {
                 return i;
         throw new ElementoNaoEncontradoException("elemento nao encontrado");
     }
+    public void bubbleSort () {
+        for (int i=1; i < vetor.length; i++) {
+            for (int j=0; j < vetor.length - i; j++) {
+                if (vetor[j] > vetor[j+1]) {
+                    int aux = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1] = aux;
+                }
+            }
+        }
+    }
 }
 
 class VetorVazioException extends RuntimeException{
