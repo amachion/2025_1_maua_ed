@@ -13,12 +13,18 @@ public class NovoTesteVetor {
         // System.out.println("tamanho = " + v1.getTamanho());
 
         Random r = new Random();
-        for (int i=1; i<=200; i++) {
+        for (int i=1; i<=30; i++) {
             if (r.nextBoolean()) {
                 v1.insere(i);
+                System.out.println(i + " foi inserido");
             }
             else {
-                v1.remove();
+               try {
+                System.out.println(v1.remove() + " foi removido");
+               }
+               catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+               }
             }
             System.out.println(v1);
             System.out.println("tamanho = " + v1.getTamanho());
