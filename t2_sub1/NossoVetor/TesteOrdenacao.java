@@ -17,6 +17,34 @@ public class TesteOrdenacao {
             long fim = new Date().getTime();
             System.out.println("\nbubble demorou " + (fim - ini) + " milissegundos");
             //System.out.println("vetor ordenado pelo buble:\n" + v);
+
+            v.preencheVetor();
+            ini = new Date().getTime();
+            v.selectionSort();
+            fim = new Date().getTime();
+            System.out.println("\nselection demorou " + (fim - ini) + " milissegundos");
+
+            v.preencheVetor();
+            ini = new Date().getTime();
+            v.insertionSort();
+            fim = new Date().getTime();
+            System.out.println("\ninsertion demorou " + (fim - ini) + " milissegundos");
+
+            ini = new Date().getTime();
+            v.bubbleSort();
+            fim = new Date().getTime();
+            System.out.println("\nbubble ordenado demorou " + (fim - ini) + " milissegundos");
+
+            ini = new Date().getTime();
+            v.selectionSort();
+            fim = new Date().getTime();
+            System.out.println("\nselection ordnado demorou " + (fim - ini) + " milissegundos");
+
+            ini = new Date().getTime();
+            v.insertionSort();
+            fim = new Date().getTime();
+            System.out.println("\ninsertion ordenado demorou " + (fim - ini) + " milissegundos");
+
             System.out.print("\nescolha o novo tamanho, 0 encerra: ");
             t = scanner.nextInt();
         }
