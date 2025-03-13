@@ -15,14 +15,39 @@ public class TesteOrdenacao {
             long ini = Calendar.getInstance().getTimeInMillis();
             v.bubbleSort();
             long fim = Calendar.getInstance().getTimeInMillis();
-
             System.out.println("bubble demorou " + (fim - ini) + " milissegundos");
             //System.out.println("\nvetor ordenado:\n" + v);
-
             // System.out.println("agora: " + Calendar.getInstance().getTime());
             // System.out.println("agora em milissegundos: " + Calendar.getInstance().getTimeInMillis());
 
-            System.out.print("digite o novo tamanho, 0 encerra: ");
+            v.preecheVetor();
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.selectionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("selection demorou " + (fim - ini) + " milissegundos");
+
+            v.preecheVetor();
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.insertionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("insertion demorou " + (fim - ini) + " milissegundos");
+
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.bubbleSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("bubble ordenado demorou " + (fim - ini) + " milissegundos");
+
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.selectionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("selection ordenado demorou " + (fim - ini) + " milissegundos");
+
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.insertionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("insertion ordenado demorou " + (fim - ini) + " milissegundos");
+
+            System.out.print("\ndigite o novo tamanho, 0 encerra: ");
             t = scanner.nextInt();
         }
         scanner.close();
