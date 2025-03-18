@@ -17,6 +17,34 @@ public class TesteOrdenacao {
             long fim = Calendar.getInstance().getTimeInMillis();
             //System.out.println(fim);
             System.out.println("bubble demorou " + (fim-ini) + " milissegundos");
+
+            v.preencheVetor();
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.selectionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("selection demorou " + (fim-ini) + " milissegundos");
+
+            v.preencheVetor();
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.insertionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("insertion demorou " + (fim-ini) + " milissegundos");
+           
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.bubbleSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("bubble ordenado demorou " + (fim-ini) + " milissegundos");
+
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.selectionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("selection ordenado demorou " + (fim-ini) + " milissegundos");
+
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.insertionSort();
+            fim = Calendar.getInstance().getTimeInMillis();
+            System.out.println("insertion ordenado demorou " + (fim-ini) + " milissegundos");
+            
             //System.out.println("\nvetor ordenado:\n" + v);
             System.out.print("\nescolha o novo tamanho, 0 encerra: ");
             t = scanner.nextInt();
