@@ -1,16 +1,12 @@
-public class ListaSimples {
+public class ListaSimplesCopia {
     private No primeiro;
-    private No ultimo;
-    //vamos usar o construtor padrão: primeiro e último = null
+    //vamos usar o construtor padrão: primeiro = null
     public boolean estaVazia() {
         return primeiro == null;
     }
     public void insereInicio(int elemento) {
         No novo = new No(elemento);
-        if (estaVazia()) {
-            ultimo = novo;
-        }
-        else {
+        if (!estaVazia()) {
             novo.setProximo(primeiro);
         }
         primeiro = novo;
@@ -20,9 +16,6 @@ public class ListaSimples {
             throw new RuntimeException("lista vazia, nao ha o que remover");
         int elemento = primeiro.getInfo();
         primeiro = primeiro.getProximo();
-        if (primeiro == null) {//esvaziou a lista
-            ultimo = null;
-        }
         return elemento;
     }
     @Override
@@ -47,8 +40,11 @@ public class ListaSimples {
             primeiro = novo;
         }
         else {
-            ultimo.setProximo(novo);
+            No runner = primeiro;
+            while (runner.getProximo() != null) {//vai até o último da lista
+                runner = runner.getProximo();
+            }
+            runner.setProximo(novo);
         }
-        ultimo = novo;
     }
 }
