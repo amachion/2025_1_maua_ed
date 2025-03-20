@@ -1,16 +1,12 @@
-public class ListaSimples {
+public class ListaSimplesCopia {
     private No primeiro;
-    private No ultimo;
-    //vamos usar o construtor padrão, isto é, primeiro e último = null
+    //vamos usar o construtor padrão, isto é, primeiro = null
     public boolean estaVazia() {
         return primeiro == null;
     }
     public void insereInicio(int elemento) {
         No novo = new No(elemento);
-        if (estaVazia()) {
-            ultimo = novo;
-        }
-        else {
+        if (!estaVazia()) {
             novo.setProximo(primeiro);
         }
         primeiro = novo;
@@ -18,12 +14,8 @@ public class ListaSimples {
     public int removeInicio () {
         if (estaVazia()) 
             throw new RuntimeException("lista vazia, nao ha o que remover");
-        
         int elemento = primeiro.getInfo();
         primeiro = primeiro.getProximo();
-        if (primeiro == null) { //esvaziou a lista
-            ultimo = null;
-        }
         return elemento;
     }
     @Override
@@ -46,30 +38,13 @@ public class ListaSimples {
         No novo = new No(elemento);
         if (estaVazia()) {
             primeiro = novo;
-            ultimo = novo;
-        }
-        else {
-            ultimo.setProximo(novo);
-            ultimo = novo;
-        }
-    }
-    public int removeFim () {
-        if (estaVazia())
-            throw new RuntimeException("lista vazia, nao ha o que remover");
-
-        int elemento = ultimo.getInfo();
-        if (primeiro == ultimo) { //a lista tem um elemento único
-            primeiro = null;
-            ultimo = null;
         }
         else {
             No runner = primeiro;
-            while (runner.getProximo() != ultimo) {//varre até o penúltimo
+            while (runner.getProximo() != null) { //percorre até o último da lista
                 runner = runner.getProximo();
             }
-            runner.setProximo(null);
-            ultimo = runner;
+            runner.setProximo(novo);
         }
-        return elemento;
     }
 }
