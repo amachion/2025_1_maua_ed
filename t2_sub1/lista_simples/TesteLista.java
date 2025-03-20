@@ -23,5 +23,18 @@ public class TesteLista {
         catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
+
+        lista.insereFim(10);
+        lista.insereFim(20);
+        lista.insereFim(30);
+        System.out.println("lista depois das insercoes de fim\n" + lista);
+
+        try {
+            System.out.println(lista.removeFim() + " foi removido do fim da lista");
+            System.out.println("lista depois da remocao de fim\n" + lista);
+        }
+        catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
