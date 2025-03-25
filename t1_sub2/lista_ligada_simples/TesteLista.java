@@ -24,5 +24,14 @@ public class TesteLista {
         lista.insereFim(100);
         lista.insereFim(200);
         System.out.println("lista depois das insercoes de fim\n" + lista);
+
+        try{
+            System.out.println(lista.removeFim() + " foi removido do final");
+        }
+        catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("lista depois da remocao de fim:\n" + lista);
+
     }
 }
