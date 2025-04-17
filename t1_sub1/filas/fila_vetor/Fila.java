@@ -39,7 +39,34 @@ public class Fila {
         for (int i=primeiro, cont=0; cont < ocupacao; cont++, i = proximaPosicao(i)) {
             s = s + dados[i] + " ";
         }
-        return s + "\n";
+        return s;
+    }
+    public String toStringVetor () {
+        String s = "";
+        int i;
+        if (filaVazia())
+            for (i=0; i < dados.length; i++)
+                s += "_ ";
+        else if (filaCheia())
+            for (i=0; i < dados.length; i++)
+                s += dados[i] + " ";
+        else if (primeiro < ultimo) {
+            for (i=0; i<primeiro; i++)
+                s += "_ ";
+            for (i=primeiro; i<ultimo; i++)
+                s += dados[i] + " ";
+            for (i=ultimo; i<dados.length; i++)
+                s += "_ ";
+        }
+        else {
+            for (i=0; i<ultimo; i++)
+                s += dados[i] + " ";
+            for (i=ultimo; i<primeiro; i++)
+                s += "_ ";
+            for (i=primeiro; i<dados.length; i++)
+                s += dados[i] + " ";
+        }
+        return s;
     }
 
 }
