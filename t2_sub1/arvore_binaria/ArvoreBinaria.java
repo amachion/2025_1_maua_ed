@@ -50,7 +50,7 @@ public class ArvoreBinaria {
     private void insereComOcorrenciasRec(int info, No atual) {
         if (info == atual.getInfo()) {
             NoOcorrencias noOcorrencias = (NoOcorrencias)atual;
-            noOcorrencias.setOcorrencias(noOcorrencias.getOcorrencias() + 1);
+            noOcorrencias.incrementaOcorrencias();
         }
         else if (info > atual.getInfo()) {
             if (atual.getDireita() == null)
@@ -64,5 +64,19 @@ public class ArvoreBinaria {
             else
                 insereComOcorrenciasRec(info, atual.getEsquerda());
         }
+    }
+    public int altura () {
+        if (arvoreVazia()) return 0;
+        return alturaRec(raiz);
+    }
+    public int alturaRec(No atual) {
+        if (atual.getDireita() == null && atual.getEsquerda() == null)
+            return 0;
+        int alturaEsq = 0, alturaDir = 0;
+        if (atual.getEsquerda() != null)
+            alturaEsq = alturaRec(atual.getEsquerda());
+        if (atual.getDireita() != null)
+            alturaDir = alturaRec(atual.getDireita());
+        return alturaDir > alturaEsq ? alturaDir + 1 : alturaEsq + 1;
     }
 }
