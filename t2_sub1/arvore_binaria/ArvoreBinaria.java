@@ -79,4 +79,86 @@ public class ArvoreBinaria {
             alturaDir = alturaRec(atual.getDireita());
         return alturaDir > alturaEsq ? alturaDir + 1 : alturaEsq + 1;
     }
+    public boolean remove (int info) {
+        if (arvoreVazia()) throw new RuntimeException("falha na remocao");
+        if (info == raiz.getInfo()) {
+            if (raiz.getEsquerda() == null && raiz.getDireita() == null) {
+                // não tem filhos
+                raiz = null;
+            }
+            else if (raiz.getEsquerda() == null) {
+                // tem só o filho da direita
+                raiz = raiz.getDireita();
+            }
+            else if (raiz.getDireita() == null) {
+                // tem só o filho da esquerda
+                raiz = raiz.getEsquerda();
+            }
+            else {
+                // tem os 2 filhos
+                No suc = sucessor(raiz);
+                suc.setEsquerda(raiz.getEsquerda());
+                raiz = suc;
+            }
+            return true;
+        }
+        //chamadas recursivas
+        if (info > raiz.getInfo())
+            return removeRec (info, raiz.getDireita(), raiz, true);
+        return removeRec (info, raiz.getEsquerda(), raiz, false);
+    }
+    private boolean removeRec (int info, No atual, No pai, boolean eFilhoDireita) {
+        if (atual != null) {
+            if (info == atual.getInfo()) {
+                if (atual.getEsquerda() == null && atual.getDireita() == null) {
+                    if (eFilhoDireita) 
+                        pai.setDireita(null);
+                    else
+                        pai.setEsquerda(null);
+                }
+                else if (atual.getEsquerda() == null) {//só tem filho direito
+                    if (eFilhoDireita) 
+                        pai.setDireita(atual.getDireita());
+                    else 
+                        pai.setEsquerda(atual.getDireita());
+                }
+                else if (atual.getDireita() == null) {//só tem filho esquerdo
+                    if (eFilhoDireita)
+                        pai.setDireita(atual.getEsquerda());
+                    else 
+                        pai.setEsquerda(atual.getEsquerda());
+                }
+                else {
+                    No suc = sucessor(atual);
+                    suc.setEsquerda(atual.getEsquerda());
+                    if (eFilhoDireita)
+                        pai.setDireita(suc);
+                    else
+                        pai.setEsquerda(suc);
+                }
+                return true;
+            }
+            else {
+                if (info > atual.getInfo())
+                    return removeRec(info, atual.getDireita(), atual, true);
+                return removeRec(info, atual.getDireita(), atual, false);
+            }
+        }
+        return false;
+    }
+    private No sucessor (No atual) {
+        No suc = atual.getDireita();
+        No runner = suc.getEsquerda();
+        No pai = null; //inicialização para poder compilar
+        while (runner != null) {
+            pai = suc;
+            suc = runner;
+            runner = runner.getEsquerda();
+        }
+        if (suc != atual.getDireita()){
+            pai.setEsquerda(suc.getDireita());
+            suc.setDireita(atual.getDireita());
+        }
+        return suc;
+    }
 }
