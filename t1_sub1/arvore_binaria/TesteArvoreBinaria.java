@@ -18,5 +18,15 @@ public class TesteArvoreBinaria {
         System.out.println();
         System.out.println("altura da arvore com repeticoes: " + abb.altura());
         System.out.println("altura da arvore sem repeticoes: " + abbOcorrencias.altura());
+        try {
+            if (abb.remove(50))
+                System.out.println("50 removido");
+            else 
+                System.out.println("50 não encontrado");
+        }
+        catch (RuntimeException rt) {
+            System.out.println(rt.getMessage());
+        }
+        System.out.println("arvore depois da remocao:\n" + abb);
     }
 }
