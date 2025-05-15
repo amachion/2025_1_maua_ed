@@ -55,4 +55,42 @@ public class NossoHash <K, V>{
             System.out.println("\\\\");
         }
     }
+    // public boolean containsKey (K chave) {
+    //     int indice = hash(chave);
+    //     Entrada<K, V> atual = tabela[indice];
+    //     while (atual != null) {
+    //         if (atual.chave.equals(chave))
+    //             return true;
+    //         atual = atual.proximo;
+    //     }
+    //     return false;
+    // }
+    public V containsKey (K chave) {
+        int indice = hash(chave);
+        Entrada<K, V> atual = tabela[indice];
+        while (atual != null) {
+            if (atual.chave.equals(chave))
+                return atual.valor;
+            atual = atual.proximo;
+        }
+        return null;
+    }
+    public boolean containsValue (V valor) {
+        for (int indice=0; indice < capacidade; indice++) {
+            Entrada<K, V> atual = tabela[indice];
+            while (atual != null) {
+                if (atual.valor.equals(valor))
+                    return true;
+                atual = atual.proximo;
+            }
+        }
+        return false;
+    }
+    public boolean isEmpty () {
+        for (int indice=0; indice<capacidade; indice++) {
+            if (tabela[indice] != null)
+                return false;
+        }
+        return true;
+    }
 }
