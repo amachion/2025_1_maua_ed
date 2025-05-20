@@ -163,6 +163,24 @@ public class NossoVetor {
             quickSort(q+1, r);
         }
     }
+    public void inserirEscondidoV1 (int info) {
+        if (estaVazio()) insere(info);
+        else {
+            if (estaCheio()) redimensionaVetor(vetor.length * 2);
+            vetor[ocupacao] = vetor[ocupacao-1];
+            vetor[ocupacao-1] = info;
+            ocupacao++;
+        }
+    }
+    public void inserirEscondidoV2 (int info) {
+        if (estaVazio()) insere(info);
+        else {
+            int temp = remove();
+            insere(info);
+            insere(temp);
+        }
+    }
+    
 }
 
 class VetorVazioException extends RuntimeException {
