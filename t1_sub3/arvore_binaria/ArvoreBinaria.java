@@ -77,7 +77,7 @@ public class ArvoreBinaria {
         return alturaDireita > alturaEsquerda ? alturaDireita + 1 : alturaEsquerda + 1;
     }
     public void removeValor (int info) {
-        if (arvoreVazia()) throw new RuntimeException ("falha na remocao");
+        if (arvoreVazia()) throw new RuntimeException ("arvore vazia, falha na remocao");
         if (info == raiz.getInfo()) {
             if (raiz.getDireita() == null && raiz.getEsquerda() == null) {
                 raiz = null;
@@ -102,6 +102,7 @@ public class ArvoreBinaria {
         }
     }
     private void removeValorRec (int info, No atual, No pai, boolean efilhoDireita) {
+        if (atual == null) throw new RuntimeException("elemento nao encontrado, falha na remocao");
         if (info == atual.getInfo()) {
             if (atual.getDireita() == null && atual.getEsquerda() == null) {
                 if (efilhoDireita)

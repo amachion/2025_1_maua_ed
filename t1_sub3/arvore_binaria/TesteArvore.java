@@ -16,5 +16,13 @@ public class TesteArvore {
 
         System.out.println("altura da arvore original: " + abb.altura());
         System.out.println("altura da arvore compactada: " + abbZip.altura());
+
+        try {
+            abb.removeValor(10);
+        }
+        catch (RuntimeException rt) {
+            System.out.println(rt.getMessage());
+        }
+        System.out.println("foi");
     }
 }
