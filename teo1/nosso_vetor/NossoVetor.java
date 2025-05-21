@@ -180,7 +180,42 @@ public class NossoVetor {
             insere(temp);
         }
     }
-    
+    public void mergeSort (int p, int r) {
+        if (p < r) {
+            int q = (p + r) / 2; //calcula o índice do meio
+            mergeSort(p, q); //chamada recursiva para metade esquerda
+            mergeSort(q+1, r); //chamada recursiva para metade direita
+            merge (p, q, r); // intercala as duas metades ordenadas
+        }
+    }
+    private void merge (int p, int q, int r) {
+        int n1 = q - p + 1; // tamanho do subvetor A[p..q]
+        int n2 = r - q;    // tamanho do subvetor A[q+1..r]
+
+        // cria vetores auxiliares incluindo espaços para sentinelas
+        int[] left = new int[n1+1];
+        int[] right = new int[n2+1];
+
+        //copia valores do vetor original para os auxiliares
+        for (int i=0; i<n1; i++)
+            left[i] = vetor[p+i];
+        for (int j=0; j<n2; j++)
+            right[j] = vetor[q+1 + j];
+        //valores sentinela
+        left[n1] = Integer.MAX_VALUE;
+        right[n2] = Integer.MAX_VALUE;
+
+        //intercala
+        int i=0, j=0, k=p;
+        while (k<=r) {
+            if (left[i] <= right[j]) {
+                vetor[k++] = left[i++];
+            }
+            else {
+                vetor[k++] = right[j++];
+            }
+        }
+    }
 }
 
 class VetorVazioException extends RuntimeException {
